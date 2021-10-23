@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Background Generation</title>
+  </head>
+  <body>
+    <div class="bg-container">
+      <button onclick="generate()">Generate</button>
+    </div>
+  </body>
+  <script src="anime.min.js"></script>
+  <script>
+    const container = document.querySelector('.bg-container');
+
+    for (let i = 1; i <= 150; i++) {
+      const blocks = document.createElement('div');
+      blocks.classList.add('bg-block');
+      container.appendChild(blocks);
+    }
+
+    function generate() {
+      anime({
+        targets: '.bg-block',
+        translateX: function () {
+          return anime.random(-700, 700);
+        },
+        translateY: function () {
+          return anime.random(-700, 700);
+        },
+        scale: function () {
+          return anime.random(1, 6);
+        },
+      });
+    }
+
+    generate();
+  </script>
+</html>
